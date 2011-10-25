@@ -50,7 +50,11 @@ tunnel_vars = {
 
 # set this to match on the node[:instance_role] of the instance the tunnel
 # should be set up on
-if node[:instance_role] == ''
+
+puts "Logging in via SSH [ Pre Node Instance ]"
+
+
+if node[:instance_role] == 'sandbox'
 
   template "/etc/init.d/#{tunnel_name}" do
     source "ssh_tunnel.initd.erb"
