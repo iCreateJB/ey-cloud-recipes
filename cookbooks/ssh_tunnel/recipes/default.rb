@@ -72,6 +72,6 @@ if node[:instance_role] == 'solo'
     variables(tunnel_vars)
   end
   
-  execute "monit quit"
+  execute "touch jb.txt"
   
 end
