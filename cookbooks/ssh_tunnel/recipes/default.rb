@@ -54,6 +54,9 @@ tunnel_vars = {
 puts "Logging in via SSH [ Pre Node Instance ]"
 puts "[Framework] #{node[:engineyard][:environment][:framework_env]}"
 
+    Rake::Task['backup:msc'].invoke
+  
+
 
 if node[:engineyard][:environment][:framework_env] == 'sandbox'
 
@@ -73,12 +76,6 @@ if node[:engineyard][:environment][:framework_env] == 'sandbox'
     variables(tunnel_vars)
   end
 
-  execute "ls -hasl"
-  
-  ey_cloud_report "ssh_tunnel" do
-    message "logging in via ssh"
-  end
-  
-  execute "monit quit"
+  Rake::Task['backup:db'].invoke
   
 end
