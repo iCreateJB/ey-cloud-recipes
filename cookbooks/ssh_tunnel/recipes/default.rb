@@ -52,10 +52,10 @@ tunnel_vars = {
 # should be set up on
 
 puts "Logging in via SSH [ Pre Node Instance ]"
-# puts "#{node.to_yaml}"
+puts "#{node.to_yaml}"
 
 
-if node[:framework_env] == 'sandbox'
+if node[:apps][:framework_env] == 'sandbox'
 
   template "/etc/init.d/#{tunnel_name}" do
     source "ssh_tunnel.initd.erb"
