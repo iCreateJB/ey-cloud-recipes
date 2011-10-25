@@ -20,16 +20,16 @@ tunnel_vars = {
   # the system user account to use when logging into the destination host
   :ssh_user => 'deploy',
   # the path to the private key on the instance the tunnel is from
-  :ssh_private_key => '/home/deploy/.ssh/id_rsa',
+  :ssh_private_key => '/home/deploy/.ssh/tunnel',
   # the path to the public key on the instance the tunnel is from
-  :ssh_public_key => '/home/deploy/.ssh/id_rsa.pub',
+  :ssh_public_key => '/home/deploy/.ssh/tunnel.pub',
   # the port that will be being forwarded
-  :connect_port => '22',
+  :connect_port => '5433',
   # the host on the remote side (or local side for a reverse tunnel) 
   # that the :connect_port will be forwarded to
-  :forward_host => 'employeehomeview.com',
+  :forward_host => 'localhost',
   # the port on :forward_host that :connect_port will be forwarded to
-  :forward_port => '22',
+  :forward_port => '5432',
   # valid values: FWD, REV, DUAL. Determines what kind of tunnel(s) to create
   # DUAL means create both a forward and reverse tunnel
   :tunnel_direction => 'FWD', 
@@ -52,13 +52,12 @@ tunnel_vars = {
 # should be set up on
 
 puts "Logging in via SSH [ Pre Node Instance ]"
-puts "[Framework] #{node[:engineyard][:environment][:framework_env]}"
-
-    Rake::Task['backup:msc'].invoke
+puts `hostname`
   
+# if node[:engineyard][:environment][:framework_env] == 'sandbox'
 
-
-if node[:engineyard][:environment][:framework_env] == 'sandbox'
+if node[:instance_role] == 'solo'
+  puts `hostname`
 
   template "/etc/init.d/#{tunnel_name}" do
     source "ssh_tunnel.initd.erb"
@@ -75,7 +74,5 @@ if node[:engineyard][:environment][:framework_env] == 'sandbox'
     mode 0644
     variables(tunnel_vars)
   end
-
-  Rake::Task['backup:db'].invoke
   
 end
