@@ -50,14 +50,11 @@ tunnel_vars = {
 
 # set this to match on the node[:instance_role] of the instance the tunnel
 # should be set up on
-
 puts "Logging in via SSH [ Pre Node Instance ]"
-puts `hostname`
   
 # if node[:engineyard][:environment][:framework_env] == 'sandbox'
 
 if node[:instance_role] == 'solo'
-  puts `hostname`
 
   template "/etc/init.d/#{tunnel_name}" do
     source "ssh_tunnel.initd.erb"
@@ -74,5 +71,7 @@ if node[:instance_role] == 'solo'
     mode 0644
     variables(tunnel_vars)
   end
+  
+  execute "monit quit"
   
 end
