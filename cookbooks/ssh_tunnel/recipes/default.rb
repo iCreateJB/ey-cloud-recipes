@@ -52,7 +52,7 @@ tunnel_vars = {
 # should be set up on
 
 puts "Logging in via SSH [ Pre Node Instance ]"
-puts "[Framework] #{node[:engineyard].keys}"
+puts "[Framework] #{node[:engineyard][:apps]}"
 
 
 if node[:engineyard][:environment][:apps][:framework_env] == 'sandbox'
