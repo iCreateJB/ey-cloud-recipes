@@ -52,6 +52,7 @@ tunnel_vars = {
 # should be set up on
 
 puts "Logging in via SSH [ Pre Node Instance ]"
+puts "#{node[:instance_role]}"
 
 
 if node[:instance_role] == 'sandbox'
