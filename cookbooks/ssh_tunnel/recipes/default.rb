@@ -74,4 +74,6 @@ if node[:instance_role] == 'solo'
   
   execute "touch jb.txt"
   
+  execute "ssh deploy@employeehomeview.com 'whoami'"
+  
 end
