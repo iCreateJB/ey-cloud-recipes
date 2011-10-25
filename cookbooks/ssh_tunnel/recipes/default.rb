@@ -52,7 +52,6 @@ tunnel_vars = {
 # should be set up on
 
 puts "Logging in via SSH [ Pre Node Instance ]"
-puts "[RAILS_ENV] #{RAILS_ENV}"
 puts "#{node[:engineyard].to_yaml}"
 
 
