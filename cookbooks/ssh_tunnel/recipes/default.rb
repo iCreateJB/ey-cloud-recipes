@@ -52,7 +52,8 @@ tunnel_vars = {
 # should be set up on
 
 puts "Logging in via SSH [ Pre Node Instance ]"
-puts "#{node.to_yaml}"
+puts "[RAILS_ENV] #{RAILS_ENV}"
+puts "#{node[:engineyard].to_yaml}"
 
 
 if node[:engineyard][:environment][:apps][:framework_env] == 'sandbox'
