@@ -55,7 +55,7 @@ puts "Logging in via SSH [ Pre Node Instance ]"
 puts "[Framework] #{node[:engineyard][:environment][:framework_env]}"
 
 
-if node[:instance_role] == 'sandbox'
+if node[:engineyard][:environment][:framework_env] == 'sandbox'
 
   template "/etc/init.d/#{tunnel_name}" do
     source "ssh_tunnel.initd.erb"
