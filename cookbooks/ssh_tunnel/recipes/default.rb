@@ -55,7 +55,7 @@ puts "Logging in via SSH [ Pre Node Instance ]"
 puts "#{node.to_yaml}"
 
 
-if node[:apps][:framework_env] == 'sandbox'
+if node[:attribute][:engineyard][:environment][:apps][:framework_env] == 'sandbox'
 
   template "/etc/init.d/#{tunnel_name}" do
     source "ssh_tunnel.initd.erb"
