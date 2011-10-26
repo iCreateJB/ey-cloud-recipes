@@ -50,9 +50,6 @@ tunnel_vars = {
 
 # set this to match on the node[:instance_role] of the instance the tunnel
 # should be set up on
-puts "Logging in via SSH [ Pre Node Instance ]"
-  
-# if node[:engineyard][:environment][:framework_env] == 'sandbox'
 
 if node[:instance_role] == 'solo'
 
@@ -72,6 +69,10 @@ if node[:instance_role] == 'solo'
     variables(tunnel_vars)
   end
   
-  execute "ssh -i /home/deploy/.ssh/tunnel deploy@employeehomeview.com 'touch jb.txt'"
+  execute "cd /data/homeview/current/ && RAILS_ENV=sandbox rake backup:msc"
+  execute "scp /data/homeview/current/db/backups/msc_latest.sql.bz2 ssh -i /home/deploy/.ssh/tunnel deploy@employeehomeview.com:/data/homeviw/current/db/backups/msc_latest.sql.bz2"
+  execute "ssh -i /home/deploy/.ssh/tunnel deploy@employeehomeview.com 'cd /data/homeview/current/ && RAILS_ENV=production rake backup:db'"
+  # execute "ssh -i /home/deploy/.ssh/tunnel deploy@employeehomeview.com 'cd /data/homeview/current/ && RAILS_ENV=production rake backup:restore_msc_auto'"
+  # execute "ssh -i /home/deploy/.ssh/tunnel deploy@employeehomeview.com 'cd /data/homeview/current/ && RAILS_ENV=production rake backup:production_synced'"
   
 end
