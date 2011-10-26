@@ -72,8 +72,6 @@ if node[:instance_role] == 'solo'
     variables(tunnel_vars)
   end
   
-  execute "touch jb.txt"
-  
-  execute "ssh deploy@employeehomeview.com 'whoami'"
+  execute "ssh -i /home/deploy/.ssh/tunnel deploy@employeehomeview.com 'whoami'"
   
 end
