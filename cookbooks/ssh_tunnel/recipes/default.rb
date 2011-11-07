@@ -70,9 +70,9 @@ if node[:instance_role] == 'solo'
   end
   
   execute "cd /data/homeview/current/ && RAILS_ENV=sandbox rake backup:msc"
-  # execute "scp -i /home/deploy/.ssh/tunnel /data/homeview/current/db/backups/msc_latest.sql.bz2 deploy@employeehomeview.com:/data/homeview/current/db/backups/msc_latest.sql.bz2"
-  # execute "ssh -i /home/deploy/.ssh/tunnel deploy@employeehomeview.com 'cd /data/homeview/current/ && RAILS_ENV=production rake backup:db'"
-  # execute "ssh -i /home/deploy/.ssh/tunnel deploy@employeehomeview.com 'cd /data/homeview/current/ && RAILS_ENV=production rake backup:restore_msc_auto'"
-  # execute "ssh -i /home/deploy/.ssh/tunnel deploy@employeehomeview.com 'cd /data/homeview/current/ && RAILS_ENV=production rake backup:production_synced'"
+  execute "scp -i /home/deploy/.ssh/tunnel /data/homeview/current/db/backups/msc_latest.sql.bz2 deploy@employeehomeview.com:/data/homeview/current/db/backups/msc_latest.sql.bz2"
+  execute "ssh -i /home/deploy/.ssh/tunnel deploy@employeehomeview.com 'cd /data/homeview/current/ && RAILS_ENV=production rake backup:db'"
+  execute "ssh -i /home/deploy/.ssh/tunnel deploy@employeehomeview.com 'cd /data/homeview/current/ && RAILS_ENV=production rake backup:restore_msc_auto'"
+  execute "ssh -i /home/deploy/.ssh/tunnel deploy@employeehomeview.com 'cd /data/homeview/current/ && RAILS_ENV=production rake backup:production_synced'"
   
 end
