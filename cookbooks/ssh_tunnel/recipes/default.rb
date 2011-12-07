@@ -74,7 +74,7 @@ if node[:instance_role] == 'solo'
   execute "ssh -i /home/deploy/.ssh/tunnel_2 deploy@employeehomeview.com 'cd /data/homeview/current/ && RAILS_ENV=production rake backup:db'"
   execute "ssh -i /home/deploy/.ssh/tunnel_2 deploy@employeehomeview.com 'cd /data/homeview/current/ && RAILS_ENV=production rake backup:restore_msc_auto'"
   execute "ssh -i /home/deploy/.ssh/tunnel_2 deploy@employeehomeview.com 'cd /data/homeview/current/ && RAILS_ENV=production rake backup:production_synced'"
-  execute "/usr/bin/rsync -avzh 'ssh -i /home/deploy/.ssh/tunnel_2' deploy@employeehomeview.com:/data/homeview/current/public/files/ /data/homeview/current/public/files/"
-  execute "/usr/bin/rsync -avzh 'ssh -i /home/deploy/.ssh/tunnel_2' deploy@employeehomeview.com:/data/homeview/current/public/uploaded_images/ /data/homeview/current/public/uploaded_images/"
+  # execute "/usr/bin/rsync -avzh 'ssh -i /home/deploy/.ssh/tunnel_2' deploy@employeehomeview.com:/data/homeview/current/public/files/ /data/homeview/current/public/files/"
+  # execute "/usr/bin/rsync -avzh 'ssh -i /home/deploy/.ssh/tunnel_2' deploy@employeehomeview.com:/data/homeview/current/public/uploaded_images/ /data/homeview/current/public/uploaded_images/"
   
 end
