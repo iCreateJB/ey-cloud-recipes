@@ -20,9 +20,9 @@ tunnel_vars = {
   # the system user account to use when logging into the destination host
   :ssh_user => 'deploy',
   # the path to the private key on the instance the tunnel is from
-  :ssh_private_key => '/home/deploy/.ssh/tunnel_4',
+  :ssh_private_key => '/home/deploy/.ssh/tunnel',
   # the path to the public key on the instance the tunnel is from
-  :ssh_public_key => '/home/deploy/.ssh/tunnel_4.pub',
+  :ssh_public_key => '/home/deploy/.ssh/tunnel.pub',
   # the port that will be being forwarded
   :connect_port => '5433',
   # the host on the remote side (or local side for a reverse tunnel) 
@@ -69,7 +69,7 @@ if node[:instance_role] == 'solo'
     variables(tunnel_vars)
   end
   
-  execute "ssh -i /home/deploy/.ssh/tunnel_4 deploy@employeehomeview.com 'cd /data/homeview/current/ && RAILS_ENV=production rake:stats' && pwd"
+  execute "ssh -i /home/deploy/.ssh/tunnel_4 deploy@employeehomeview.com 'cd /data/homeview/current/ && RAILS_ENV=production rake:stats'"
   # execute "cd /data/homeview/current/ && RAILS_ENV=sandbox rake backup:msc"
   # execute "scp -i /home/deploy/.ssh/tunnel_3 /data/homeview/current/db/backups/msc_latest.sql.bz2 deploy@employeehomeview.com:/data/homeview/current/db/backups/msc_latest.sql.bz2"
   # execute "ssh -i /home/deploy/.ssh/tunnel_3 deploy@employeehomeview.com 'cd /data/homeview/current/ && RAILS_ENV=production rake backup:db'"
