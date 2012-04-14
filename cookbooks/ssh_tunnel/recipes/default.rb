@@ -20,9 +20,9 @@ tunnel_vars = {
   # the system user account to use when logging into the destination host
   :ssh_user => 'deploy',
   # the path to the private key on the instance the tunnel is from
-  :ssh_private_key => '/home/deploy/.ssh/tunnel',
+  :ssh_private_key => '/home/deploy/.ssh/tunnel_4',
   # the path to the public key on the instance the tunnel is from
-  :ssh_public_key => '/home/deploy/.ssh/tunnel.pub',
+  :ssh_public_key => '/home/deploy/.ssh/tunnel_4.pub',
   # the port that will be being forwarded
   :connect_port => '5433',
   # the host on the remote side (or local side for a reverse tunnel) 
