@@ -36,7 +36,7 @@ tunnel_vars = {
   # the path to the ssh executable to use when making the ssh connection
   :ssh_cmd => '/usr/bin/ssh',
   # whether or not to use StrictHostKeyChecking when making the ssh connection
-  :skip_hostkey_auth => false,
+  :skip_hostkey_auth => true,
   # the path to the known hosts file with the public key of the remote server
   # only set if :skip_hostkey_auth is set to false
   # note that if :skip_hostkey_auth is set to true then you need to make a
