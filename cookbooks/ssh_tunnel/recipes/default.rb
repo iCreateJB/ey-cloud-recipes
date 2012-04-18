@@ -69,7 +69,7 @@ if node[:instance_role] == 'solo'
     variables(tunnel_vars)
   end
   
-  execute "ssh -i /home/deploy/.ssh/tunnel_4 deploy@employeehomeview.com 'cd /data/homeview/current/ && RAILS_ENV=production rake:stats'"
+  execute "ssh -i /home/deploy/.ssh/tunnel_4 deploy@employeehomeview.com 'cd /data/homeview/current/ && RAILS_ENV=production rake stats'"
   # execute "cd /data/homeview/current/ && RAILS_ENV=sandbox rake backup:msc"
   # execute "scp -i /home/deploy/.ssh/tunnel_3 /data/homeview/current/db/backups/msc_latest.sql.bz2 deploy@employeehomeview.com:/data/homeview/current/db/backups/msc_latest.sql.bz2"
   # execute "ssh -i /home/deploy/.ssh/tunnel_3 deploy@employeehomeview.com 'cd /data/homeview/current/ && RAILS_ENV=production rake backup:db'"
